@@ -120,3 +120,7 @@ aprendiendoDjangosu
 TesisGlez
 startbootstrap-sb-admin-2-1.0.7
 carpeta_prubas
+bin/
+lib64
+pyvenv.cfg
+share/

@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'BaseProyecto.wsgi.application'
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'projectsici',
+         'NAME': 'sigepla2022',
          'HOST': 'localhost',
-         'USER': 'postgres',
-         'PASSWORD': 'J05huarg#',
+         'USER': 'sigepla2',
+         'PASSWORD': 'SIGEPLA2022',
          'PORT': 5432,
 
         #'ENGINE': 'django.db.backends.sqlite3',
