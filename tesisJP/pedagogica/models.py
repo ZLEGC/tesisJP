@@ -97,4 +97,5 @@ class Carrera(models.Model):
     def save(self):   #el metodo save va a guardar la informacion en estos campos
         super(Carrera,self).save()
 
-
+    class Perfil_Egreso(models.Model):
+        perfilEgre =models.CharField(max_length=100, blank=False, null=False)
