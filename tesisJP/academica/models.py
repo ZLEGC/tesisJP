@@ -6,6 +6,9 @@ from bases.models import ClaseModelo
 class Grupo(models.Model):
     grupo = models.CharField(max_length=50, blank=False, null=False)
 
+    #semestre= models.ForeignKey(Semestre, on_delete=models.CASCADE)
+
+
 
     asignaturas= models.ManyToManyField(
         'asignatura', blank=True, related_name="GruposA"
@@ -21,28 +24,7 @@ class Grupo(models.Model):
     def save(self):
         super(Grupo,self).save()
 
-class Docente(models.Model):
-    cedulaProfecional = models.CharField(max_length=50, blank=False, null=False)
-     
-     
-    grupos= models.ManyToManyField(
-        'grupo', blank=True, related_name="DocentesG"
-    )
 
-    asignaturas= models.ManyToManyField(
-        'asignatura', blank=True, related_name="DocentesA"
-    )
-
-
-    def __str__(self): #lo que gresesara al consultar 
-        return self.cedula_profecional
-
-    
-    class Meta:
-        verbose_name_plural = 'Cedula Profecional'
-
-    def save(self):
-        super(Docente,self).save()
 
 class Tipos_persona(models.Model):
     tipo = models.CharField(max_length=30, blank=False, null=False)
@@ -72,3 +54,27 @@ class Persona(models.Model):
 
     def save(self):
         super(Persona,self).save()
+class Docente(models.Model):
+    cedulaProfecional = models.CharField(max_length=50, blank=False, null=False)
+    
+    tipo_persona= models.ForeignKey(Persona, on_delete=models.CASCADE)
+
+     
+    grupos= models.ManyToManyField(
+        'grupo', blank=True, related_name="DocentesG"
+    )
+
+    asignaturas= models.ManyToManyField(
+        'asignatura', blank=True, related_name="DocentesA"
+    )
+
+
+    def __str__(self): #lo que gresesara al consultar 
+        return self.cedula_profecional
+
+    
+    class Meta:
+        verbose_name_plural = 'Cedula Profecional'
+
+    def save(self):
+        super(Docente,self).save()
