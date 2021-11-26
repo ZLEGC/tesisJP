@@ -99,3 +99,4 @@ class Carrera(models.Model):
 
     class Perfil_Egreso(models.Model):
         perfilEgre =models.CharField(max_length=100, blank=False, null=False)
+    #pollo prueba
