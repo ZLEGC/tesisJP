@@ -5,20 +5,32 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
+class Ambitos(models.Model):
+    descripcionAmb =models.CharField(max_length=400, blank=False, null=False)
+
+    def __str__(self):
+        return self.descripcionAmb
+    class Meta:
+        verbose_name_plural = 'Ambitos'
+    def save(self):
+        super(Ambitos,self).save()
+
+class Perfil_Egreso(models.Model):
+    descripcionPe =models.CharField(max_length=400, blank=False, null=False)
+
+    descripcionAmb= models.ForeignKey(Ambitos, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.descripcionPe 
+    class Meta:
+        verbose_name_plural = 'Perfil_Egresos'
+    def save(self):
+        super(Perfil_Egreso,self).save()
+
 class Plan_Estudio(models.Model):
     objetivo =models.CharField(max_length=400, blank=False, null=False)
-    perfilEgreso =models.CharField(max_length=400, blank=False, null=False)
-    carreraAsig =models.CharField(max_length=400, blank=False, null=False)
-    recomendacionesMet = models.CharField(max_length=400, blank=False, null=False)
-    procedimientosEval =models.CharField(max_length=400, blank=False, null=False)
-    procedimientosAcre =models.CharField(max_length=400, blank=False, null=False)
-    certificacionEst =models.CharField(max_length=400, blank=False, null=False)
-    perfilE =models.CharField(max_length=400, blank=False, null=False)
-    complementarias =models.CharField(max_length=400, blank=False, null=False)
-    firmas =models.CharField(max_length=100, blank=False, null=False)
-    direccionEscuela =models.CharField(max_length=200, blank=False, null=False)
 
-
+    descripcionPE= models.ForeignKey(Perfil_Egreso, on_delete=models.CASCADE)    
 
     def __str__(self):
         return self.objetivo 
