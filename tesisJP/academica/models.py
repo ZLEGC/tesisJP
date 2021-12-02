@@ -24,8 +24,9 @@ class Persona(models.Model):
     
     tipoPersona= models.models.OneToOneField(
         TiposPersona, 
-        on_delete=models.CASCADE)
-
+        on_delete=models.CASCADE,
+        primary_key=True,
+        )
 
     def __str__(self): #lo que gresesara al consultar 
         return self.tipo
