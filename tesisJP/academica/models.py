@@ -22,7 +22,9 @@ class Persona(models.Model):
     apellidoMaterno = models.CharField(max_length=50, blank=False, null=False)
     curp = models.CharField(max_length=50, blank=False, null=False)
     
-    tipoPersona= models.ForeignKey(TiposPersona, on_delete=models.CASCADE)
+    tipoPersona= models.models.OneToOneField(
+        TiposPersona, 
+        on_delete=models.CASCADE)
 
 
     def __str__(self): #lo que gresesara al consultar 
