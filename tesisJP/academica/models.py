@@ -22,7 +22,7 @@ class Persona(models.Model):
     apellidoMaterno = models.CharField(max_length=50, blank=False, null=False)
     curp = models.CharField(max_length=50, blank=False, null=False)
     
-    tipoPersona= models.models.OneToOneField(
+    tipoPersona= models.OneToOneField(
         TiposPersona, 
         on_delete=models.CASCADE,
         primary_key=True,
