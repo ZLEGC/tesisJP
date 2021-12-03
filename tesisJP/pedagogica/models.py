@@ -5,8 +5,22 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
+
+class Competencias (models.Model):
+    competencia =models.CharField(max_length=200, blank=False, null=False)
+    descripcionCompetencia =models.CharField(max_length=400, blank=False, null=False)
+
+    def __str__(self):
+        return self.competencia
+    class Meta:
+        verbose_name_plural = 'Competencias'
+    def save(self):
+        super(Competencias,self).save()
+
+
 class Ambitos(models.Model):
-    descripcionAmb =models.CharField(max_length=400, blank=False, null=False)
+    descripcionAmb =models.CharField(max_length=200, blank=False, null=False)
+    aCompetencia= models.ForeignKey(Competencias, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.descripcionAmb
@@ -15,10 +29,11 @@ class Ambitos(models.Model):
     def save(self):
         super(Ambitos,self).save()
 
+
 class Perfil_Egreso(models.Model):
     descripcionPe =models.CharField(max_length=400, blank=False, null=False)
 
-    descripcionAmb= models.ForeignKey(Ambitos, on_delete=models.CASCADE)
+    ambito= models.ForeignKey(Ambitos, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.descripcionPe 
@@ -30,8 +45,9 @@ class Perfil_Egreso(models.Model):
 class Plan_Estudio(models.Model):
     objetivo =models.CharField(max_length=400, blank=False, null=False)
 
-    descripcionPE= models.ForeignKey(Perfil_Egreso, on_delete=models.CASCADE)    
-
+    descripcionPEgre= models.ForeignKey(Perfil_Egreso, on_delete=models.CASCADE)    
+    pCarrera= models.ForeignKey(Carrera, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.objetivo 
     class Meta:
@@ -98,7 +114,7 @@ class Carrera(models.Model):
 
     #Relacion hacia la tabla de año
     ano =models.ForeignKey(Ano, on_delete=models.CASCADE)
-    Plan_Estudio= models.ForeignKey(Plan_Estudio, on_delete=models.CASCADE)
+    
 
     def __str__(self): #lo que va a devolver de manera automatica
         return self.carrera 
@@ -108,7 +124,3 @@ class Carrera(models.Model):
     
     def save(self):   #el metodo save va a guardar la informacion en estos campos
         super(Carrera,self).save()
-
-    class Perfil_Egreso(models.Model):
-        perfilEgre =models.CharField(max_length=100, blank=False, null=False)
-    #pollo prueba

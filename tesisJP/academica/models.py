@@ -45,11 +45,11 @@ class Docente(models.Model):
 
      
     grupos= models.ManyToManyField(
-        'grupo', blank=True, related_name="DocentesG"
+        'Grupo', blank=True, related_name="DocentesG"
     )
 
     asignaturas= models.ManyToManyField(
-        'asignatura', blank=True, related_name="DocentesA"
+        Asignatura, blank=True, related_name="DocentesA"
     )
 
 
@@ -70,7 +70,7 @@ class Grupo(models.Model):
 
     
     asignaturas= models.ManyToManyField(
-        'asignatura', blank=True, related_name="GruposA"
+        Asignatura, blank=True, related_name="GruposA"
     )
 
 
