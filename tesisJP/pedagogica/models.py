@@ -42,19 +42,6 @@ class Perfil_Egreso(models.Model):
     def save(self):
         super(Perfil_Egreso,self).save()
 
-class Plan_Estudio(models.Model):
-    objetivo =models.CharField(max_length=400, blank=False, null=False)
-
-    descripcionPEgre= models.ForeignKey(Perfil_Egreso, on_delete=models.CASCADE)    
-    pCarrera= models.ForeignKey(Carrera, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.objetivo 
-    class Meta:
-        verbose_name_plural = 'Planes_Estudio'
-    def save(self):
-        super(Plan_Estudio,self).save()
-
 
 class Asignatura(models.Model):
     asignatura = models.CharField(max_length=100, blank=False, null=False)
@@ -124,3 +111,17 @@ class Carrera(models.Model):
     
     def save(self):   #el metodo save va a guardar la informacion en estos campos
         super(Carrera,self).save()
+
+        
+class Plan_Estudio(models.Model):
+    objetivo =models.CharField(max_length=400, blank=False, null=False)
+
+    descripcionPEgre= models.ForeignKey(Perfil_Egreso, on_delete=models.CASCADE)    
+    pCarrera= models.ForeignKey(Carrera, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.objetivo 
+    class Meta:
+        verbose_name_plural = 'Planes_Estudio'
+    def save(self):
+        super(Plan_Estudio,self).save()
