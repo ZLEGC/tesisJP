@@ -12,8 +12,8 @@ class PlanView(LoginRequiredMixin, generic.ListView):
     context_object_name= "obj"
     login_url = "usuarios:login"
 
-class CrearPlan(LoginRequiredMixin, generic.CreateView):
-    model =  
-    template_name= "p.html"
-    context_object_name= "obj"
-    login_url = "usuarios:login"
+class CrearPlan(LoginRequiredMixin, generic.ListView):
+   model = Plan_Estudio
+   template_name= "crearplan.html"
+   context_object_name= "obj"
+   login_url = "usuarios:login"

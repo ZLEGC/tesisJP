@@ -1,8 +1,42 @@
 {% extends 'base/base.html' %}
 
 {% block tituloprincipal %}
-<h1 class="page-header">Plan de Estudios </h1>
+<h1 class="page-header">Generar Plan de Estudios </h1>
 {% endblock %}
+
 
 {% block content%}
 
+
+    <p class="text-center h3 mt-1">{{titulo}}</p>
+    {% if planes %}
+    <p class="h5 mb-5">Para falicitar la elaboración del plan de estudios, por favor, seleccione un plan previamente elaborado para utilizar como base.</p>
+    <form action="#" method="POST" enctype="multipart/form-data" class="d-inline-flex flex-wrap table-responsive justify-content-center" id="nuevo_plan">
+        {% csrf_token %}
+        <div class="col-auto form-group px-2 justify-content-left">
+            <label for="plan">Plan que se usara como base:</label>
+            <select class="form-control" name="plan" id="plan" form="nuevo_plan" required>
+                {% for plan in planes %}
+                    <option value="{{plan.id}}">{{plan}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% for formulario in formularios %}
+            {% for form in formulario %}
+            <div class="col-auto form-group px-2 justify-content-center">
+                <label for="id_{{form.name}}">{{form.label}}</label>
+                {{form}}
+            </div>
+            {% endfor %}
+        {% endfor %}      
+        <div class="col-12 d-flex justify-content-center">
+            <input class="col-4 form-control btn btn-primary" id="submit" type="submit" value="Continuar" ></input>
+        </div>
+    </form>
+    {% else %} 
+        <p class="h5 warning">No existen planes de estudio registrados. Por favor, registra un plan de estudios primero.</p>
+        {% comment %} <div class="col-12 d-flex justify-content-center">
+            <a class="btn btn-primary col-4" href="{% url 'Editar_plan' %}">Registrar Nuevo Plan</a>
+        </div> {% endcomment %}
+    {% endif %}
+{% endblock %}
