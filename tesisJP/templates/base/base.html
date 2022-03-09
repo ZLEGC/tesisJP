@@ -246,7 +246,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="{% url 'usuarios:usuarios_crear' %}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -287,13 +287,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Academica</a>
+                            <a href="{% url 'academica:academica_list'%}"><i class="fa fa-table fa-fw"></i> Academica</a>
                         </li>
                         <li>
-                            <a href="{% url 'usuarios:users_list'%}"><i class="fa fa-table fa-fw"></i> user</a>
+                            <a href="{% url 'usuarios:usuarios_list'%}"><i class="fa fa-table fa-fw"></i> user</a>
                         </li>
                         <li>
-                            <a href="{% url 'usuarios:users_list'%}"><i class="fa fa-bar-chart-o fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Flot Charts</a>

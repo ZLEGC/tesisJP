@@ -8,6 +8,6 @@ from academica.models import Grupo
 
 class AcademicaView(LoginRequiredMixin, generic.ListView):
     model =  Grupo
-    template_name= "indexA.htlm"
+    template_name= "indexA.html"
     context_object_name= "obj"
     login_url = "bases:login"

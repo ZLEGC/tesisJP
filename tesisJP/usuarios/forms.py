@@ -4,7 +4,7 @@ from django.forms.models import ModelForm
 from django.forms.widgets import PasswordInput
 
 from usuarios.models import User
-from .models import Usuarios
+from .models import User
 
 # from para agregar usuarios
 

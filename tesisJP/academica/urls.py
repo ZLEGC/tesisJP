@@ -4,6 +4,6 @@ from .views import AcademicaView
 
 
 urlpatterns = [
-    path('docentes/', AcademicaView.as_view(), name="docentes_list"),
-  
+    path('academiaca/', AcademicaView.as_view(), name="academica_list"),
+    path('docente/', AcademicaView.as_view(), name="docente_list"),
 ]
