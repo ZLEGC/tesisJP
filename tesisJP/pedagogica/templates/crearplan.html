@@ -47,33 +47,40 @@
                                 </small>
                                 <div class="form-group">
                                     <label>Plan que se usara como base</label>
-                                    <input class="form-control" required= "true" placeholder="Introduce los nombres" name="first_name" id="id_first_name" required value="{%if obj%} {{obj.first_name}} {% endif %}">
+                                    <input class="form-control" required= "true" placeholder="Introduce el plan que se ocupara como base" name="plan_base" id="id_planbase" required value="{%if obj%} {{obj.first_name}} {% endif %}">
                                 </div>
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input class="form-control" required= "true" placeholder="Introduce los apellidos" name="last_name" id="id_last_name" required value="{%if obj%} {{obj.last_name}} {% endif %}">
+                                    <input class="form-control" required= "true" placeholder="Introduce nombre del documento" name="first_name" id="id_name" required value="{%if obj%} {{obj.doc_name}} {% endif %}">
                                 </div>
                                 <div class="form-group">
                                     <label>Carrera</label>
-                                    <input class="form-control" required= "true" placeholder="Introduce la Contraseña" name="password" id="id_password" required value="{%if obj%} {{obj.password}} {% endif %}">
+                                    <input class="form-control" required= "true" placeholder="Introduce nombre de la carrera" name="carrera" id="id_carrera" required value="{%if obj%} {{obj.carrera}} {% endif %}">
                                 </div>
                                 <div class="form-group">
                                     <label>Año</label>
-                                    <input class="form-control" required= "true" placeholder="Introduce el nombre de usuario" name="username" id="id_username" required value="{%if obj%} {{obj.username}} {% endif %}">
+                                    <input class="form-control" required= "true" placeholder="Introduce año de inicio de plan de estudios" name="username" id="id_plan_estudio" required value="{%if obj%} {{obj.plan_estudio}} {% endif %}">
                                 </div>
                                 <div class="form-group">
                                     <label>Duracion</label>
-                                    <input class="form-control" required= "true" placeholder="Introduce el correo" name="email" id="id_email" required value="{%if obj%} {{obj.email}} {% endif %}">
+                                    <input class="form-control" required= "true" placeholder="Introduce duracion de la carrera" name="duracion" id="id_duracion" required value="{%if obj%} {{obj.duracion}} {% endif %}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de usuario</label>
-                                    <select mutiple class="form-control" name="groups" id="id_groups">
+                                    <select mutiple class="form-control" name="groups" id="id_usuario">
 
                                         <option requiered value=2> Administrador</option>
                                         <option requiered value=1> Jefe de carrera</option>
                                     </select> 
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label>Tipo de usuario</label>
+                                    <select mutiple class="form-control" name="groups" id="id_usuario">
+
+                                        <option requiered value=2> Administrador</option>
+                                        <option requiered value=1> Jefe de carrera</option>
+                                    </select> 
+                                </div>
 
 
                                 <!-- {{form.as_p}}-->
