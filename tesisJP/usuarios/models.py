@@ -1,8 +1,10 @@
 from django.db import models
+from bases.models import ClaseModelo
 from django.contrib.auth.models import AbstractUser
 from django.conf.global_settings import MEDIA_URL, STATIC_URL
+
 from academica.models import Grupo,Asignatura
- 
+from crum import get_current_request
 # Create your models here.
 class User(AbstractUser):
 
@@ -11,12 +13,13 @@ class User(AbstractUser):
     imagen = models.ImageField(
         upload_to='img/user/',blank=True, null=True
     )
-    telefono= models.IntegerField(blank=True, null=True)
-    grado =models.CharField(max_length=100, blank=True, null=True) 
-    curp =models.CharField(max_length=19, blank=True, null=True)
+    telefono= models.CharField(max_length=10, blank=True, null=True)
+    grado = models.CharField(max_length=30, blank=True, null=True) 
+    curp = models.CharField(max_length=18, blank=True, null=True)
+    rfc = models.CharField(max_length=13, blank=True, null=True)
     direccion = models.CharField(max_length=300, blank=True, null=True)
     cedula =models.CharField(max_length=50, blank=True, null=True)
-    matricula=models.CharField(max_length=8, blank=True, null=True)
+    matricula=models.CharField(max_length=10, blank=True, null=True)
 
 
          
@@ -34,4 +37,13 @@ class User(AbstractUser):
             return '{}{}'. format (MEDIA_URL, self.image)
         return '{}{}'. format(STATIC_URL,'img/empty.png' )
 
+    def get_group_session(self):
+        try:
+            request = get_current_request()
+            groups = self.groups.all()
+            if groups.exists():
+                if 'group' not in request.session:
+                    request.session['group'] = groups[0]
+        except:
+            pass
 
