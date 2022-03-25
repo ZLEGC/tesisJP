@@ -5,7 +5,7 @@ from .views import PlanView, CrearPlan
 
 urlpatterns = [
     path('plan/', PlanView.as_view(),name="plan_list"),
-    path('CrearPlan/', CrearPlan.as_view(),name='crear_plan'),
-    #path('PlanNew/', PlanNew.as_view(),name="plan_new"),
+    path('crearplan/', CrearPlan.as_view(),name='plan_new'),
+    #path('planew/', PlanNew.as_view(),name="plan_new"),
   
 ]
