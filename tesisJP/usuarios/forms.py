@@ -18,15 +18,18 @@ class UsuarioForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['estatura','peso', 'imagen', 'telefono',
-                    'grado', 'curp','rfc', 'direccion', 'cedula','matricula']
+        fields = ['first_name', 'last_name','estatura','peso', 'imagen', 'telefono','username',
+                    'grado', 'curp','rfc', 'direccion', 'cedula','matricula','groups']
         exclude_fields = ['is_superuser', 'last_login',
                           'is_staff', 'is_active', 'date_joined', ]
 
-        labels = {'estatura:Estatura' ,
+        labels = {'first_name:Nombre del Usuario',
+                    'last_name:Apellidos',
+                    'estatura:Estatura' ,
                     'peso:Peso',
                     'imagen:Avatar',    
                     'telefono:Telefono',
+                    'username:Usuario',
                     'grado:Grado',
                     'curp:Crup',
                     'rfc:Rfc',
@@ -34,7 +37,10 @@ class UsuarioForm(forms.ModelForm):
                     'cedula:Cedula',
                     'matricula:Matricula'}
 
-        widget = {'estatura': forms.TextInput,
+        widget = {'nombre': forms.TextInput,
+                  'aPaterno': forms.TextInput,
+                  'aMaterno': forms.TextInput,
+                  'estatura': forms.TextInput,
                   'peso': forms.TextInput,
                   'imagen': forms.TextInput,
                   'telefono': forms.TextInput,
@@ -43,7 +49,9 @@ class UsuarioForm(forms.ModelForm):
                   'rfc': forms.TextInput,
                   'dirrecion': forms.TextInput,
                   'cedula': forms.TextInput,
-                  'matricula': forms.TextInput}
+                  'matricula': forms.TextInput,
+                  'groups': SelectMultiple()
+                  }
 
     def clean_email(self):
         '''
@@ -107,14 +115,18 @@ class UsuarioEditForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['estatura','peso', 'imagen', 'telefono',
-                    'grado', 'curp','rfc', 'direccion', 'cedula','matricula']
+        fields = ['first_name', 'last_name','estatura','peso', 'imagen', 'telefono','username',
+                    'grado', 'curp','rfc', 'direccion', 'cedula','matricula','groups']
         exclude_fields = ['is_superuser', 'last_login',
                           'is_staff', 'is_active', 'date_joined', ]
-        labels = {'estatura:Estatura' ,
+
+        labels = {'first_name:Nombre del Usuario',
+                    'last_name:Apellidos',
+                    'estatura:Estatura' ,
                     'peso:Peso',
                     'imagen:Avatar',    
                     'telefono:Telefono',
+                    'username:Usuario',
                     'grado:Grado',
                     'curp:Crup',
                     'rfc:Rfc',
@@ -122,7 +134,10 @@ class UsuarioEditForm(forms.ModelForm):
                     'cedula:Cedula',
                     'matricula:Matricula'}
 
-        widget = {'estatura': forms.TextInput,
+        widget = {'nombre': forms.TextInput,
+                  'aPaterno': forms.TextInput,
+                  'aMaterno': forms.TextInput,
+                  'estatura': forms.TextInput,
                   'peso': forms.TextInput,
                   'imagen': forms.TextInput,
                   'telefono': forms.TextInput,
@@ -131,7 +146,9 @@ class UsuarioEditForm(forms.ModelForm):
                   'rfc': forms.TextInput,
                   'dirrecion': forms.TextInput,
                   'cedula': forms.TextInput,
-                  'matricula': forms.TextInput}
+                  'matricula': forms.TextInput,
+                  'groups': SelectMultiple()
+                  }
 
     # Validaciones para email y password
     '''def clean_email(self):

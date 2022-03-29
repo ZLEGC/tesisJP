@@ -39,36 +39,25 @@
                         <tbody>
                             {%for u in obj %}
                             <tr class="odd gradeX">
-                                <td>{{u.imagen}}</td>
+                                <td><img src="/media/{{u.image}}" class="img-fluid mx-auto d-block" style="width:40px; height: 40px;"></td>
                                 <td>{{u.first_name}}</td>
                                 <td>{{u.last_name}}</td>
                                 <td class="center">{{u.telefono}}</td>
                                 <td class="center">{{u.curp}}</td>
+                                
                                 <td>
+                            
                                     <!--<a  href= "{% url 'usuarios:usuarios_list' %}" class=" btn btn-success btn-circle" role="button" title="Agregar Usuario"><i class="fa fa-medkit"></i></a>-->
-                                    <a href= "#" class=" btn btn-warning btn-circle" role="button" title="Editar Usuario"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class=" btn btn-danger btn-circle" role="button" title="Eliminar Usuario"><i class="fa fa-trash-o"></i></a>      
+                                    <a href= "{% url 'usuarios:usuarios_actualizar' u.id %}" class=" btn btn-warning btn-circle" role="button" title="Editar Usuario"><i class="fa fa-edit"></i></a>
+                                    <a href= "{% url 'usuarios:usuarios_borrar' u.id %}" class=" btn btn-danger btn-circle" role="button" title="Eliminar Usuario"><i class="fa fa-trash-o"></i></a>      
                                 </td>
                             </tr>
-                            {%endfor%}
-                            </ul>
-
-                                </td>
-                                
-                                <!--<td>{{item.fc|date:"d/m/Y H:i:s"}}</td>
-                                <td>{{item.fm|date:"d/m/Y H:i:s"}}</td>
-                                <td>{{item.estado|yesno:"Activo, Inactivo"}}</td>-->
-                                
-                                <!-- De Esta manera se puede checar si un usuario tiene permisos para realizar una accion-->
-                                {%if perms.user.can_add%}
-                                {%endif%}
-
-                                
-                            </tr>
-                            {%endif%}
+                        {%endfor%}
+                    
                         </tbody>
                         </table>
-                   
+                    {%endif%}
+                        
                 </div>
             </div>
         </div>

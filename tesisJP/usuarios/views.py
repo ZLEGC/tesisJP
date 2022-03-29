@@ -51,6 +51,13 @@ class CrearUsuario(LoginRequiredMixin,ValidatePermissionRequiredMixin, generic.C
     succes_url = reverse_lazy("usuarios:usuarios_list")
     login_url = "bases:login"
     
+    def get(self, request, *args, **kwargs):
+        grupos = models.Group.objects.all()
+        context = {
+            'grupos': grupos
+        }
+        return render(request, 'formU.html', context)
+
     def form_valid(self, form):
         form.instance.uc = self.request.user
 
