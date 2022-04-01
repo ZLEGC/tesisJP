@@ -360,12 +360,7 @@
               <li>
                 <a href="{% url 'usuarios:usuarios_list' %}">
                   <span class="glyphicon glyphicon-book"></span> Listar Usuarios </a>
-              </li>
-              <li>
-                <a href="{% url 'usuarios:usuarios_crear' %}">
-                  <span class="glyphicon glyphicon-modal-window"></span> Agregar Usuarios </a>
-              </li>
-              
+              </li>              
             </ul>
           </li>
           <li>
@@ -394,18 +389,24 @@
               <span class="caret"></span>
             </a>
             <ul class="nav sub-nav">
+              {% if perms.academica.view_grupo %}
               <li>
-                <a href="admin_forms-elements.html">
-                  <span class="glyphicon glyphicon-edit"></span> Admin Elements </a>
+                <a href="{% url 'academica:grupo_list'%}">
+                  <span class="glyphicon glyphicon-edit"></span> Admin Grupos </a>
               </li>
+              {%endif%}
+              {% if perms.academica.view_horario %}
               <li>
-                <a href="admin_forms-widgets.html">
-                  <span class="glyphicon glyphicon-calendar"></span> Admin Widgets </a>
+                <a href="{% url 'academica:Horario_list'%}">
+                  <span class="glyphicon glyphicon-calendar"></span> Admin horarios </a>
               </li>
+              {%endif%}
+              {% if perms.academica.view_registro %}
               <li>
-                <a href="admin_forms-validation.html">
-                  <span class="glyphicon glyphicon-check"></span> Admin Validation </a>
+                <a href="{% url 'academica:registro_list'%}">
+                  <span class="glyphicon glyphicon-check"></span> Admin Registro </a>
               </li>
+              {%endif%}
               <li>
                 <a href="admin_forms-layouts.html">
                   <span class="fa fa-desktop"></span> Admin Layouts </a>

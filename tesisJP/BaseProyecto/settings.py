@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pedagogica',
     'academica',
     'usuarios',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

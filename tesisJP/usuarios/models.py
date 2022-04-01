@@ -2,9 +2,10 @@ from django.db import models
 from bases.models import ClaseModelo
 from django.contrib.auth.models import AbstractUser
 from django.conf.global_settings import MEDIA_URL, STATIC_URL
-
-from academica.models import Grupo,Asignatura
+from django.urls import reverse
+from pedagogica.models import Asignatura
 from crum import get_current_request
+
 # Create your models here.
 class User(AbstractUser):
 
@@ -22,15 +23,15 @@ class User(AbstractUser):
     matricula=models.CharField(max_length=10, blank=True, null=True)
 
 
-         
-    grupos= models.ManyToManyField(
-        Grupo, blank=True, related_name="DocentesG"
-    )
-
     asignaturas= models.ManyToManyField(
-        Asignatura, blank=True, related_name="DocentesA"
+        Asignatura, blank=True, related_name="UserAsg"
     )
 
+    def get_absolute_url(self):
+        return reverse('usuarios:usuarios_list')
+
+    def _str_(self):
+        return str(self.first_name)
 
     def get_image(slef):
         if self.imagen:
@@ -46,4 +47,9 @@ class User(AbstractUser):
                     request.session['group'] = groups[0]
         except:
             pass
+
+    class Meta:
+        verbose_name_plural='Docentes'
+
+
 

@@ -162,3 +162,9 @@ class BorrarUsuario(LoginRequiredMixin, generic.DeleteView):
     template_name = 'eliminarU.html'
     context_objeject_name = 'obj'
     success_url = reverse_lazy('usuarios:usuarios_list')
+
+
+
+
+
+
